@@ -1,4 +1,9 @@
 {
+  "scripts": {
+    "start:backend": "nx serve be",
+    "lint:backend": "nx lint be",
+    "test:backend": "nx test be"
+  },
   "devDependencies": {
     "@nestjs/schematics": "^10.0.1",
     "@nestjs/testing": "^10.0.2",
