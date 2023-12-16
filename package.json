@@ -2,7 +2,8 @@
   "scripts": {
     "start:backend": "nx serve be",
     "lint:backend": "nx lint be",
-    "test:backend": "nx test be"
+    "test:backend": "nx test be",
+    "lint:prettier": "npx prettier . --write"
   },
   "devDependencies": {
     "@nestjs/schematics": "^10.0.1",
