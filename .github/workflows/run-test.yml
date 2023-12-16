@@ -30,7 +30,7 @@ jobs:
         with:
           # This part is also where you can pass other options, for example:
             prettier_options: --write **/*.{ts,js,json,yml,yaml,md} 
-            github_token: ${{ STUDY_PAT }}
+            github_token: ${{ secrets.STUDY_PAT }}
             
       - name: Use Node.js 18.x
         uses: actions/setup-node@v3
