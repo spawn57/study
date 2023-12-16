@@ -40,7 +40,7 @@ function ensureUpToDateInstallation() {
     nxJson = require(nxJsonPath);
   } catch {
     console.error(
-      '[NX]: nx.json is required when running the nx wrapper. See https://nx.dev/more-concepts/nx-and-the-wrapper'
+      '[NX]: nx.json is required when running the nx wrapper. See https://nx.dev/more-concepts/nx-and-the-wrapper',
     );
     process.exit(1);
   }
@@ -55,7 +55,7 @@ function ensureUpToDateInstallation() {
             nx: nxJson.installation.version,
             ...nxJson.installation.plugins,
           },
-        })
+        }),
       );
       cp.execSync('npm i', {
         cwd: path.dirname(installationPath),
