@@ -2,7 +2,7 @@
   "root": true,
   "ignorePatterns": ["**/*"],
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@nx", "@typescript-eslint"],
+  "plugins": ["@nx"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
@@ -39,11 +39,11 @@
       },
       "rules": {}
     }
-  ],  
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/stylistic",
-    "prettier"
   ]
+  // "extends": [
+    // "eslint:recommended",
+    // "plugin:@typescript-eslint/recommended",
+    // "plugin:@typescript-eslint/stylistic",
+    // "prettier"
+  // ]
 }
