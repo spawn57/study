@@ -24,7 +24,15 @@
     {
       "files": ["*.ts", "*.tsx"],
       "extends": ["plugin:@nx/typescript"],
-      "rules": {}
+      "rules": {
+        
+        "max-lines": [
+          "error",
+          {
+            "max": 500
+          }
+        ]
+      }
     },
     {
       "files": ["*.js", "*.jsx"],
