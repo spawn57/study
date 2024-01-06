@@ -1,21 +1,39 @@
+import { Test } from '@nestjs/testing';
 import { defineFeature, loadFeature } from 'jest-cucumber';
+import { AppModule } from './app.module';
+import { INestApplication } from '@nestjs/common';
+import request from 'supertest';
 
 const feature = loadFeature(__dirname + `/app.feature`);
 
 defineFeature(feature, (test) => {
   test('Successful login', ({ given, when, then }) => {
-    let requestUrl; 
-    let result;
-    given(/^a user with username "(.*)" and password "(.*)"$/, (username, password) => { 
-      requestUrl = '/login';
+    let app: INestApplication;
+    let request;
+    let response;
+
+    given(/^a user with username "(.*)" and password "(.*)"$/, async (username, password) => {
+      const moduleRef = await Test.createTestingModule({
+        imports: [AppModule],
+      }).compile();
+
+      request = {
+        username: username,
+        password: password,
+      }
+      app = moduleRef.createNestApplication();
+      await app.init();
     });
 
-    when(/the api is triggered/, () => {
-      
+    when(/the api is triggered/, async () => {
+      response = await request(app.getHttpServer())
+        .post('/login')
+        .send(request)
     });
 
-    then(/it matches the snapshot/, () => {
-      expect(true).toMatchSnapshot();
+    then(/it matches the snapshot/, async () => {
+      expect(response).toMatchSnapshot();
+      await app.close();
     });
   });
 });
