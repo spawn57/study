@@ -1,6 +1,6 @@
-import { Controller, Get } from '@nestjs/common';
-
+import { Body, Controller, Get, Post, Req, Res } from '@nestjs/common';
 import { AppService } from './app.service';
+import { Request, Response } from 'express';
 
 @Controller()
 export class AppController {
@@ -9,5 +9,11 @@ export class AppController {
   @Get()
   getData() {
     return this.appService.getData();
+  }
+
+  @Post('/login')
+  login(@Body() body: { username: string; password: string }, @Req() request: Request, @Res() response: Response) {
+    this.appService.login(body.username, body.password);
+    response.sendStatus(200);
   }
 }
