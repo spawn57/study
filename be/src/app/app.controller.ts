@@ -13,7 +13,7 @@ export class AppController {
 
   @Post('/login')
   login(@Body() body: { username: string; password: string }, @Req() request: Request, @Res() response: Response) {
-    const result = this.appService.login(body.username, body.password);
+    this.appService.login(body.username, body.password);
     response.sendStatus(200);
   }
 }

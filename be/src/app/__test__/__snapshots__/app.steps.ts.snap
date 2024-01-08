@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Api Hello Api 1`] = `
+{
+  "header": {
+    "connection": "close",
+    "content-length": "23",
+    "content-type": "application/json; charset=utf-8",
+    "date": "Mon, 08 Jan 2024 12:55:34 GMT",
+    "etag": "W/"17-TzGXketnjihp27LBaxXaC/GQ4Cw"",
+    "x-powered-by": "Express",
+  },
+  "req": {
+    "data": {},
+    "headers": {
+      "content-type": "application/json",
+    },
+    "method": "GET",
+    "url": "http://127.0.0.1:33709/",
+  },
+  "status": 200,
+  "text": "{"message":"Hello API"}",
+}
+`;
+
+exports[`Test Api Successful login 1`] = `
+{
+  "header": {
+    "connection": "close",
+    "content-length": "2",
+    "content-type": "text/plain; charset=utf-8",
+    "date": "Mon, 08 Jan 2024 12:55:34 GMT",
+    "etag": "W/"2-nOO9QiTIwXgNtWtBJezz8kv3SLc"",
+    "x-powered-by": "Express",
+  },
+  "req": {
+    "data": {
+      "password": "test",
+      "username": "test",
+    },
+    "headers": {
+      "content-type": "application/json",
+    },
+    "method": "POST",
+    "url": "http://127.0.0.1:43043/login",
+  },
+  "status": 200,
+  "text": "OK",
+}
+`;
