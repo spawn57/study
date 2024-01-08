@@ -2,7 +2,7 @@
 export default {
   displayName: 'be',
   preset: '../jest.preset.js',
-    testEnvironment: 'node',
+  testEnvironment: 'node',
   transform: {
     '^.+\\.[tj]s$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.spec.json' }],
   },
