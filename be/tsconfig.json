@@ -8,7 +8,10 @@
     },
     {
       "path": "./tsconfig.spec.json"
-    }
+    },
+    {
+      "path": "./tsconfig.lib.json"
+    },
   ],
   "compilerOptions": {
     "esModuleInterop": true

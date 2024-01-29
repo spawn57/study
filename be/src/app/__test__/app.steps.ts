@@ -1,10 +1,9 @@
-import { Test } from '@nestjs/testing';
 import { defineFeature, loadFeature } from 'jest-cucumber';
-import { AppModule } from '../app.module';
 import { INestApplication } from '@nestjs/common';
 import request from 'supertest';
+import * as utils from '../testing.jest-helper';
 
-const feature = loadFeature(__dirname + `/app.feature`);
+const feature = loadFeature(__dirname + `/app.feature`);;
 
 defineFeature(feature, (test) => {
   test('Hello Api', ({ given, when, then }) => {
@@ -13,14 +12,8 @@ defineFeature(feature, (test) => {
     let res;
 
     given(/^a request$/, async () => {
-      const moduleRef = await Test.createTestingModule({
-        imports: [AppModule],
-      }).compile();
-
+      app = await utils.setupApp();
       req = {};
-
-      app = moduleRef.createNestApplication();
-      await app.init();
     });
 
     when(/the api is triggered/, async () => {
@@ -28,8 +21,8 @@ defineFeature(feature, (test) => {
     });
 
     then(/it matches the snapshot/, async () => {
-      expect(res).toMatchSnapshot();
-      await app.close();
+      utils.toMatchSnapshot(res);
+      await utils.dismantleApp(app);
     });
   });
 
@@ -39,16 +32,11 @@ defineFeature(feature, (test) => {
     let response;
 
     given(/^a user with username "(.*)" and password "(.*)"$/, async (username, password) => {
-      const moduleRef = await Test.createTestingModule({
-        imports: [AppModule],
-      }).compile();
-
       req = {
         username: username,
         password: password,
       };
-      app = moduleRef.createNestApplication();
-      await app.init();
+      app = await utils.setupApp()
     });
 
     when(/the api is triggered/, async () => {
@@ -56,8 +44,8 @@ defineFeature(feature, (test) => {
     });
 
     then(/it matches the snapshot/, async () => {
-      expect(response).toMatchSnapshot();
-      await app.close();
+      utils.toMatchSnapshot(response);
+      utils.dismantleApp(app);
     });
   });
 });
